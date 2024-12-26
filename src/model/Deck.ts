@@ -3,29 +3,11 @@ import { announce, standardShuffler } from "../utils/random_utils";
 
 export const colors: Colour[] = ["Red", "Blue", "Green", "Yellow"];
 export type Deck = {
-  /**
-   * The deck of cards.
-   */
   readonly preparedDeck: Card[];
-  /**
-   * Shuffle the deck.
-   */
   shuffle: () => void;
-  /**
-   * Deal a number of cards from the deck.
-   */
   deal: (numberOfCards: number) => Card[];
-  /**
-   * Get the number of cards in the deck.
-   */
   size: () => number;
-  /**
-   * Discard the top card from the deck.
-   */
   discardTopCard: () => Card;
-  /**
-   * Adds cards to the deck and shuffles it.
-   */
   addCards: (newCards: Card[]) => void;
 };
 
@@ -38,7 +20,7 @@ const addActionCards = (preparedDeck: Card[], colour: Colour) => {
   ];
 
   actionCards.forEach((card) => {
-    preparedDeck.push(card, { ...card }); // Add two of each action card
+    preparedDeck.push(card, { ...card });
   });
 };
 
@@ -46,7 +28,7 @@ const addNumberedCards = (preparedDeck: Card[], colour: Colour) => {
   for (let i = 0; i <= 9; i++) {
     const newCard: Card = { type: "NUMBERED", colour, value: i };
     preparedDeck.push(newCard);
-    if (i > 0) preparedDeck.push({ ...newCard }); // Add two of each number except 0
+    if (i > 0) preparedDeck.push({ ...newCard });
   }
 };
 
@@ -57,9 +39,6 @@ const addWildCards = (preparedDeck: Card[]) => {
   }
 };
 
-/**
- *   Create a new deck of UNO cards.
- */
 export const createDeck = (): Deck => {
   let preparedDeck: Card[] = [];
 

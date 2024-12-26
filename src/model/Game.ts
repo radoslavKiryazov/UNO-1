@@ -61,7 +61,7 @@ export const createGame = (players: Player[], targetScore = 500): Game => {
 
     while (!isGameOver()) {
       startNewHand();
-      while (!currentHand?.isHandOver()) {}
+      while (!currentHand?.isHandOver()) { }
       updateScores();
     }
 

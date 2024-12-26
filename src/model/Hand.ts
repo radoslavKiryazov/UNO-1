@@ -162,11 +162,10 @@ export const createHand = (players: Player[]): Hand => {
         discardPile.length = 0;
         if (topCard) discardPile.push(topCard);
         deck.shuffle();
-
-        const card = deck.deal(1)[0];
-        if (card) {
-          player.hand.push(card);
-        }
+      }
+      const card = deck.deal(1)[0];
+      if (card) {
+        player.hand.push(card);
       }
     }
   };
@@ -267,7 +266,7 @@ export const createHand = (players: Player[]): Hand => {
 
     while (!isPlayable) {
       console.log(`${player.name}, no playable cards! You must draw a card.`);
-      question("Press Enter to draw a card...", { hideEchoBack: true });
+      question("Press Enter to draw a card...");
       drawCards(player, 1);
       console.log(`
         \nYou drew: ${cardPrinter(player.hand[player.hand.length - 1])}

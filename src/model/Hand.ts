@@ -4,33 +4,23 @@ import { Player } from "./Player";
 import { questionInt, question } from "readline-sync";
 
 export interface Hand {
-  /** The discard pile of played cards */
   readonly discardPile: Card[];
 
-  /** Index of the current player's turn */
   readonly currentTurnIndex: number;
 
-  /** Allows the current player to play a card by its index */
   playCard: (selectedCardIndex: number) => void;
 
-  /** Allows a player to draw a specified number of cards */
   drawCards: (player: Player, numberOfCards: number) => void;
 
-  /** Checks if a player has called "UNO" */
   checkForUNO: (player: Player) => void;
 
-  /** Moves the turn to the next player */
   nextTurn: () => void;
 
-  /** Ends the current hand*/
   endHand: () => void;
 
-  /** Determines if the hand is over*/
   isHandOver: () => boolean;
 }
-/**
- * Creates and initializes a new hand with the given players.
- */
+
 export const createHand = (players: Player[]): Hand => {
   const deck = createDeck();
   deck.shuffle();

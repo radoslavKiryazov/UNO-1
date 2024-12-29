@@ -145,7 +145,7 @@ export const createHand = (players: Player[]): Hand => {
 
   const drawCards = (player: Player, numberOfCards: number) => {
     for (let i = 0; i < numberOfCards; i++) {
-      if (deck.size() === 0) {
+      if (deck.size() < numberOfCards) {
         const topCard = discardPile.pop();
         deck.addCards(discardPile);
 
